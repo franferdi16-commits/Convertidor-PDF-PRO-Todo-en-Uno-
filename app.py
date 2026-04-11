@@ -41,6 +41,10 @@ def check_password():
 if check_password():
     st.title("🚀 Convertidor PDF PRO (Todo-en-Uno)")
     st.markdown("---")
+
+    # Imagen de lapacho amarillo (si tenés una URL o la subís)
+    st.image("https://example.com/lapacho-amarillo.jpg", caption="Lapacho Amarillo - Paraguay")
+
     pdfs = st.file_uploader("Sube tus archivos PDF aquí", type="pdf", accept_multiple_files=True)
     if pdfs:
         for pdf in pdfs:
@@ -105,3 +109,7 @@ if check_password():
                 finally:
                     if os.path.exists(tmp_path):
                         os.remove(tmp_path)
+
+    # Copyright
+    st.markdown("---")
+    st.caption("© Hecho en Paraguay por Alberto Fernández 🌟")
