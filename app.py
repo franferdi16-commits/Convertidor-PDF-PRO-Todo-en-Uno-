@@ -22,7 +22,7 @@ for ruta in posibles_rutas:
 # --- 2. SISTEMA DE SEGURIDAD ---
 def check_password():
     def password_entered():
-        if st.session_state["password"] == "@dmc117asmita1411":
+        if st.session_state["password"] == st.secrets["PASSWORD"]:
             st.session_state["password_correct"] = True
             del st.session_state["password"]
         else:
@@ -99,6 +99,12 @@ if check_password():
                             "📄 Descargar Texto (.txt)",
                             "\n".join(texto_respaldo).encode("utf-8"),
                             f"{n_limpio}_RESPALDO.txt"
+                        )
+                except Exception as e:
+                    st.error(f"Error procesando {pdf.name}: {e}")
+                finally:
+                    if os.path.exists(tmp_path):
+                        os.remove(tmp_path)
                         )
                 except Exception as e:
                     st.error(f"Error procesando {pdf.name}: {e}")
