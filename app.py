@@ -23,8 +23,7 @@ for ruta in posibles_rutas:
 st.title("🚀 Convertidor PDF PRO (Todo-en-Uno)")
 st.markdown("---")
 
-# Imagen de lapacho amarillo (cambiá la URL por una real o subí la imagen)
-st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Lapacho_amarillo.jpg/640px-Lapacho_amarillo.jpg", caption="Lapacho Amarillo - Paraguay")
+st.image("https://portalguarani.com/userfiles/images/Norma%20Buttner/05%20Norma%20Buttner%20Lapacho%20amarillo%2070%20x%2050%20cm%20portalguarani.jpg", caption="Óleo de Norma Büttner - Lapacho Amarillo")
 
 pdfs = st.file_uploader("Sube tus archivos PDF aquí", type="pdf", accept_multiple_files=True)
 if pdfs:
