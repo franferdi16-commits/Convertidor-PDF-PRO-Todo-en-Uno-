@@ -105,8 +105,3 @@ if check_password():
                 finally:
                     if os.path.exists(tmp_path):
                         os.remove(tmp_path)
-                except Exception as e:
-                    st.error(f"Error procesando {pdf.name}: {e}")
-                finally:
-                    if os.path.exists(tmp_path):
-                        os.remove(tmp_path)
