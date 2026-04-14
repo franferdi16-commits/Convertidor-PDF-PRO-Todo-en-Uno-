@@ -3,6 +3,7 @@ import pdfplumber
 import pytesseract
 import io
 import fitz  # PyMuPDF
+import os
 from PIL import Image
 from docx import Document
 
