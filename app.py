@@ -33,8 +33,9 @@ if pdfs:
             doc_word = Document()
             texto_respaldo = []
 
-            # Leer PDF directo en memoria
+            # Leer PDF en memoria
             pdf_bytes = io.BytesIO(pdf.getvalue())
+            pdf_bytes.seek(0)  # Resetear el puntero
 
             try:
                 # PASO A: TEXTO Y TABLAS
@@ -57,7 +58,8 @@ if pdfs:
 
                 # PASO B: OCR DE IMÁGENES
                 with st.spinner('Escaneando contenido de imágenes (OCR)...'):
-                    with fitz.open(stream=pdf_bytes.getvalue()) as doc_fitz:
+                    pdf_bytes.seek(0)  # Resetear de nuevo
+                    with fitz.open(stream=pdf_bytes.read()) as doc_fitz:
                         for page in doc_fitz:
                             pix = page.get_pixmap(matrix=fitz.Matrix(2, 2))
                             img = Image.open(io.BytesIO(pix.tobytes("png")))
