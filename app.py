@@ -22,6 +22,8 @@ for ruta in posibles_rutas:
 # --- 2. CUERPO PRINCIPAL DE LA APP ---
 st.title("🚀 Convertidor PDF PRO (Todo-en-Uno)")
 st.markdown("---")
+
+# Imagen del Lapacho (verificá la URL)
 st.image("https://portalguarani.com/userfiles/images/Norma%20Buttner/05%20Norma%20Buttner%20Lapacho%20amarillo%2070%20x%50%20cm%20portalguarani.jpg", caption="Óleo de Norma Büttner - Lapacho Amarillo")
 
 pdfs = st.file_uploader("Sube tus archivos PDF aquí", type="pdf", accept_multiple_files=True)
@@ -35,10 +37,12 @@ if pdfs:
             doc_word = Document()
             texto_respaldo = []
 
-            # Usar archivo temporal con delete=True (por defecto)
-            with tempfile.NamedTemporaryFile(suffix=".pdf") as tmp_pdf:
+            # Archivo temporal con nombre explícito
+            with tempfile.NamedTemporaryFile(suffix=".pdf", prefix="pdf_") as tmp_pdf:
                 tmp_pdf.write(pdf.getvalue())
                 tmp_path = tmp_pdf.name
+
+                st.write(f"Procesando archivo temporal: {tmp_path}")  # Debug
 
                 try:
                     # PASO A: TEXTO Y TABLAS
